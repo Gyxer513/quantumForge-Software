@@ -1,0 +1,8 @@
+Title: Сокрушитель
+Source: https://terraria.fandom.com/ru/wiki/Крушитель
+License: CC BY-SA (Fandom)
+---
+
+Разрушитель — это молот, который наносит 24 урона, используется с очень медленной скоростью, и имеет мощность 55 %. У разрушителя та же мощность, что и у золотого молота (но гораздо больше урона), и хуже чем у метеоритового молотопора.
+Ошибка Lua в Модуль:Recipes на строке 642: attempt to concatenate field 'version' (a nil value).
+nl:The Breaker/nlit:The Breaker/it

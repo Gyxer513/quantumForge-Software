@@ -97,14 +97,23 @@ def main():
 
     # Подготовка ChromaDB
     client = chromadb.PersistentClient(path=PERSIST_DIR)
+
+    # Удаляем старую коллекцию (если существует)
     try:
         client.delete_collection(COLLECTION_NAME)
-        print(f"Удалена старая коллекция: {COLLECTION_NAME}")
-    except Exception:
-        pass  # Коллекции не было — нормально
+        print(f"✅ Удалена старая коллекция: {COLLECTION_NAME}")
+    except ValueError:
+        # Коллекции не существует — это нормально
+        print(f"ℹ️ Коллекция '{COLLECTION_NAME}' не найдена, создание новой...")
+    except Exception as e:
+        print(f"⚠️ Ошибка при удалении коллекции: {e}")
 
-    collection = client.create_collection(COLLECTION_NAME)
-    print(f"Коллекция '{COLLECTION_NAME}' создана в {PERSIST_DIR}")
+    # Создаём новую коллекцию с косинусной метрикой
+    collection = client.create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"}  # Указываем косинус как меру близости
+    )
+    print(f"✅ Коллекция '{COLLECTION_NAME}' создана в {PERSIST_DIR} с метрикой 'cosine'")
 
     # Сбор данных
     all_texts: List[str] = []
@@ -142,7 +151,7 @@ def main():
             all_texts,
             batch_size=EMBEDDING_BATCH_SIZE,
             normalize_embeddings=True,
-            show_progress_bar=True  # Покажет прогресс-бар — сигнал активности
+            show_progress_bar=True
         )
     except Exception as e:
         print(f"Ошибка при генерации эмбеддингов: {e}")

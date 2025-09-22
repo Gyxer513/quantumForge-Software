@@ -1,0 +1,9 @@
+Title: <span class="mw-page-title-main">Титанор</span>
+Source: https://terraria.fandom.com/ru/wiki/Титановая_руда
+License: CC BY-SA (Fandom)
+---
+
+Тита́новая руда́ (англ. Titanium Ore) является новой рудой Сложного режима, которая была добавлена в обновлении 1.2. Руды сложного режима, генерируются после разрушения Алтарей, Святым молотом. Титан является заменой Адамантита, при генерации мира.
+Создание[]
+Используется для[]
+Ошибка Lua в Модуль:Recipes на строке 647: attempt to concatenate field 'resulttext' (a nil value).
